@@ -12,17 +12,17 @@
 var plusOne = function (digits) {
   let additional = 0
 
-  const temp = digits.reverse().map((item, index) => {
-    const initAddOne = index === 0 ? 1 : 0
-    const current = item + additional + initAddOne
+  for (let i = digits.length - 1; i >= 0; i--) {
+    const initAddOne = i === digits.length - 1 ? 1 : 0
+    const current = digits[i] + additional + initAddOne
     additional = Math.floor(current / 10)
-    return current % 10
-  })
+    digits[i] = current % 10
+  }
 
   if (additional === 1) {
-    temp.push(1)
+    digits.unshift(1)
   }
   
-  return temp.reverse();
+  return digits;
 };
 // @lc code=end
